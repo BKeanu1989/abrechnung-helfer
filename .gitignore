@@ -1,4 +1,4 @@
-
+*.csv
 !launch.json
 !package.json
 !package-lock.json
