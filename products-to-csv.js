@@ -5,8 +5,6 @@ const path = require('path')
 const program = require('commander')
 const Json2csvParser = require('json2csv').Parser;
 
-let input_path
-
 program
     .arguments('<file> [options]')
     .option('')
@@ -16,7 +14,6 @@ program
     })
     .parse(process.argv)
 
-    console.log(input)
 const inputFile = path.resolve(process.cwd(), input)
 const artistData_string = fs.readFileSync(inputFile, 'utf8')
 
