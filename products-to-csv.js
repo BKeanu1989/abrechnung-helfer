@@ -5,8 +5,7 @@ const path = require('path')
 const program = require('commander')
 const Json2csvParser = require('json2csv').Parser;
 
-let input
-let options 
+let input_path
 
 program
     .arguments('<file> [options]')
@@ -17,8 +16,11 @@ program
     })
     .parse(process.argv)
 
+    console.log(input)
 const inputFile = path.resolve(process.cwd(), input)
 const artistData_string = fs.readFileSync(inputFile, 'utf8')
+
+const {name} = path.parse(inputFile)
 
 const artistData = JSON.parse(artistData_string)
 
@@ -26,3 +28,4 @@ const products = artistData.products
 
 const json2csvParser = new Json2csvParser()
 const csv = json2csvParser.parse(products)
+const writer = fs.writeFileSync(`./${name}-products.csv`, csv)
