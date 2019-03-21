@@ -1,8 +1,7 @@
 *.csv
-!launch.json
+*.json
 !package.json
 !package-lock.json
-*.json
 # Logs
 logs
 *.log
