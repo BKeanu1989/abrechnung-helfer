@@ -28,6 +28,7 @@ fileName = name
 const artistData = JSON.parse(artistData_string)
 
 const products = artistData.products
+const {start, end} = artistData.timeFrame
 
 let names = products.map((x) => x.order_item_name)
 let uniqueNames = [...new Set(names)]
@@ -60,7 +61,7 @@ for (productName in counter) {
 const json2csvParser = new Json2csvParser({fields: ['name', 'count']})
 const csv = json2csvParser.parse(rows)
 
-const writer = fs.writeFileSync(`./${fileName}-counts.csv`, csv)
+const writer = fs.writeFileSync(`./${fileName}-counts-${start}-${end}.csv`, csv)
 console.log("---- following products dont have a quantity ----")
 console.log(errors)
 // not possible for me (<= node 10)
