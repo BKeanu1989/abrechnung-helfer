@@ -39,5 +39,6 @@ products.forEach((product) => {
     }
 })
 
-const error_csv = json2csvParser.parse(errors)
+const error_json2csvParser = new Json2csvParser()
+const error_csv = error_json2csvParser.parse(errors)
 fs.writeFileSync(`./${name}-products-errors-${start}-${end}.csv`, error_csv)
